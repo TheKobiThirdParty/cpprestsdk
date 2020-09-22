@@ -17,6 +17,10 @@
 #include <jni.h>
 #endif
 
+#if !defined(__ANDROID__) and !defined(_WIN32)
+#include <sys/prctl.h>
+#endif
+
 namespace
 {
 #if defined(__ANDROID__)
@@ -70,6 +74,15 @@ private:
 
     static void* thread_start(void* arg) CPPREST_NOEXCEPT
     {
+
+#if !defined(__ANDROID__) and !defined(_WIN32)
+        static int thread_number = 0;
+        std::string thread_name = "pplx_t_" + std::to_string(thread_number);
+        thread_name.resize(15);
+        prctl(PR_SET_NAME, thread_name.c_str(), NULL, NULL, NULL);
+        thread_number++;
+#endif
+
 #if defined(__ANDROID__)
         // Calling get_jvm_env() here forces the thread to be attached.
         crossplat::get_jvm_env();
