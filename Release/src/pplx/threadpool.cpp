@@ -77,7 +77,7 @@ private:
 
 #if !defined(__ANDROID__) and !defined(_WIN32)
         static int thread_number = 0;
-        std::string thread_name = "pplx_t_" + std::to_string(thread_number);
+        std::string thread_name = "KobiPPLX_" + std::to_string(thread_number);
         thread_name.resize(15);
         prctl(PR_SET_NAME, thread_name.c_str(), NULL, NULL, NULL);
         thread_number++;
