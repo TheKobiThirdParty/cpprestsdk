@@ -4,13 +4,15 @@ project(cpprest C CXX)
 
 find_package(Threads REQUIRED)
 
+set(cpprest_extras_LIBRARIES crypto boost_system)
+
 catkin_package(
 INCLUDE_DIRS
   Release/include
   Release/libs/websocketpp
 LIBRARIES
   cpprest
-DEPENDS)
+DEPENDS cpprest_extras)
 
 set(CPPREST_INSTALL_HEADERS ON CACHE BOOL "Enable system header install" FORCE)
 set(CPPREST_INSTALL ON CACHE BOOL "Disable system library install" FORCE)
