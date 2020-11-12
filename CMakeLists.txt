@@ -16,8 +16,6 @@ DEPENDS cpprest_extras)
 
 set(CPPREST_INSTALL_HEADERS ON CACHE BOOL "Enable system header install" FORCE)
 set(CPPREST_INSTALL ON CACHE BOOL "Disable system library install" FORCE)
-set(BUILD_TESTS OFF CACHE BOOL "Enable build tests" FORCE)
-set(BUILD_SAMPLES OFF CACHE BOOL "Enable build samples" FORCE)
 set(CPPREST_EXCLUDE_WEBSOCKETS ON CACHE BOOL "Exclude websockets functionality." FORCE)
 
 add_subdirectory(Release)
